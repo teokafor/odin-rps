@@ -1,7 +1,6 @@
 ///// Functions /////
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
-    console.log(`Computer chose ${choice}`);
 
     switch (choice) {
         case 0:
@@ -41,19 +40,32 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+function determineRoundWinner(result, humanChoice, computerChoice) {
+    switch (result) {
+        case 0:
+            drawScore += 1;            
+            return `It's a tie! Both players chose ${humanChoice}.`
+        case 1:
+            humanScore += 1;
+            return `You win! ${humanChoice} beats ${computerChoice}.`
+        case 2:
+            computerScore += 1;
+            return `You lose! ${computerChoice} beats ${humanChoice}.`
+    } 
+}
+
 function playGame() {
     for(let i = 0; i < 5; i++) {
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
 
         let result = playRound(humanChoice, computerChoice);
-        console.log(result);
-        
+        console.log(determineRoundWinner(result, humanChoice, computerChoice));        
     }
+
+    console.log(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);    
 }
 
-
 ///// Execution /////
-let humanScore, computerScore, drawScore, humanWin = 0;
-
+let humanScore = computerScore = drawScore = humanWin = 0;
 playGame();
