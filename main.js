@@ -55,14 +55,13 @@ function determineRoundWinner(result, humanChoice, computerChoice) {
     } 
 }
 
-function playGame() {
-    let humanChoice = getHumanChoice();
+function playGame(humanChoice) {
     let computerChoice = getComputerChoice();
 
     let result = playRound(humanChoice, computerChoice);
     console.log(determineRoundWinner(result, humanChoice, computerChoice));        
 
-    console.log(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);    
+    if(humanScore === 5 || computerScore === 5) console.log(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);    
 }
 
 ///// Execution /////
@@ -73,24 +72,15 @@ let humanScore = computerScore = drawScore = humanWin = 0;
 
 const rockBtn = document.querySelector('.rock');
 rockBtn.addEventListener('click', () => {
-    let computerChoice = getComputerChoice();
-    let result = playRound('rock', computerChoice);
-    console.log(determineRoundWinner(result, 'rock', computerChoice));        
-
+    playGame('rock');
 });
 
 const paperBtn = document.querySelector('.paper');
-paperBtn.addEventListener('click', () => {
-    let computerChoice = getComputerChoice();
-    let result = playRound('paper', computerChoice);
-    console.log(determineRoundWinner(result, 'paper', computerChoice));        
-
+paperBtn.addEventListener('click', () => {      
+    playGame('paper');
 });
 
 const scissorsBtn = document.querySelector('.scissors');
 scissorsBtn.addEventListener('click', () => {
-    let computerChoice = getComputerChoice();
-    let result = playRound('scissors', computerChoice);
-    console.log(determineRoundWinner(result, 'scissors', computerChoice));        
-
+    playGame('scissors');
 });
