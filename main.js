@@ -21,8 +21,9 @@ function getHumanChoice() {
     }
 }
 
+
 // Return 0 for a draw; 1 for a human win; 2 for a computer win
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice) {    
     if(humanChoice === computerChoice) {
         return 0;
     } else {
@@ -66,4 +67,30 @@ function playGame() {
 
 ///// Execution /////
 let humanScore = computerScore = drawScore = humanWin = 0;
-playGame();
+// playGame();
+
+
+
+const rockBtn = document.querySelector('.rock');
+rockBtn.addEventListener('click', () => {
+    let computerChoice = getComputerChoice();
+    let result = playRound('rock', computerChoice);
+    console.log(determineRoundWinner(result, 'rock', computerChoice));        
+
+});
+
+const paperBtn = document.querySelector('.paper');
+paperBtn.addEventListener('click', () => {
+    let computerChoice = getComputerChoice();
+    let result = playRound('paper', computerChoice);
+    console.log(determineRoundWinner(result, 'paper', computerChoice));        
+
+});
+
+const scissorsBtn = document.querySelector('.scissors');
+scissorsBtn.addEventListener('click', () => {
+    let computerChoice = getComputerChoice();
+    let result = playRound('scissors', computerChoice);
+    console.log(determineRoundWinner(result, 'scissors', computerChoice));        
+
+});
