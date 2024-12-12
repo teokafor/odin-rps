@@ -45,16 +45,13 @@ function determineRoundWinner(result, humanChoice, computerChoice) {
     switch (result) {
         case 0:
             drawScore += 1;            
-            notification.textContent = `It's a tie! Both players chose ${humanChoice}.`;
-            break;
+            return `It's a tie! Both players chose ${humanChoice}.`;
         case 1:
             humanScore += 1;
-            notification.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
-            break;
+            return `You win! ${humanChoice} beats ${computerChoice}.`;
         case 2:
             computerScore += 1;
-            notification.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
-            break;
+            return `You lose! ${computerChoice} beats ${humanChoice}.`;
     } 
 }
 
@@ -64,16 +61,26 @@ function updateScoreText() {
     tieScore.textContent = drawScore;
 }
 
+function updateNotificationText(str) {
+    notification.textContent = str;
+}
+
 function playGame(humanChoice) {
     let computerChoice = getComputerChoice();
 
     let result = playRound(humanChoice, computerChoice);
     
-    determineRoundWinner(result, humanChoice, computerChoice);        
+    let notifString = determineRoundWinner(result, humanChoice, computerChoice);        
 
+    updateNotificationText(notifString);
     updateScoreText();
 
-    if(humanScore === 5 || computerScore === 5) console.log(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);    
+    if(humanScore === 5 || computerScore === 5) {
+        updateNotificationText(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+    }
 }
 
 ///// Execution /////
