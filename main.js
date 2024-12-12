@@ -45,13 +45,16 @@ function determineRoundWinner(result, humanChoice, computerChoice) {
     switch (result) {
         case 0:
             drawScore += 1;            
-            return `It's a tie! Both players chose ${humanChoice}.`
+            notification.textContent = `It's a tie! Both players chose ${humanChoice}.`;
+            break;
         case 1:
             humanScore += 1;
-            return `You win! ${humanChoice} beats ${computerChoice}.`
+            notification.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
+            break;
         case 2:
             computerScore += 1;
-            return `You lose! ${computerChoice} beats ${humanChoice}.`
+            notification.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
+            break;
     } 
 }
 
@@ -65,7 +68,8 @@ function playGame(humanChoice) {
     let computerChoice = getComputerChoice();
 
     let result = playRound(humanChoice, computerChoice);
-    console.log(determineRoundWinner(result, humanChoice, computerChoice));        
+    
+    determineRoundWinner(result, humanChoice, computerChoice);        
 
     updateScoreText();
 
@@ -79,7 +83,7 @@ let humanScore = computerScore = drawScore = humanWin = 0;
 const userScore = document.querySelector('.user-score');
 const cpuScore = document.querySelector('.cpu-score');
 const tieScore = document.querySelector('.tie-score');
-
+const notification = document.querySelector('.notification');
 
 
 const rockBtn = document.querySelector('.rock');
