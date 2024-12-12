@@ -55,13 +55,11 @@ function determineRoundWinner(result, humanChoice, computerChoice) {
 }
 
 function playGame() {
-    for(let i = 0; i < 5; i++) {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
 
-        let result = playRound(humanChoice, computerChoice);
-        console.log(determineRoundWinner(result, humanChoice, computerChoice));        
-    }
+    let result = playRound(humanChoice, computerChoice);
+    console.log(determineRoundWinner(result, humanChoice, computerChoice));        
 
     console.log(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);    
 }
