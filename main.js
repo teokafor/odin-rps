@@ -55,11 +55,19 @@ function determineRoundWinner(result, humanChoice, computerChoice) {
     } 
 }
 
+function updateScoreText() {
+    userScore.textContent = humanScore;
+    cpuScore.textContent = computerScore;
+    tieScore.textContent = drawScore;
+}
+
 function playGame(humanChoice) {
     let computerChoice = getComputerChoice();
 
     let result = playRound(humanChoice, computerChoice);
     console.log(determineRoundWinner(result, humanChoice, computerChoice));        
+
+    updateScoreText();
 
     if(humanScore === 5 || computerScore === 5) console.log(`Game over! Final score:\nYou: ${humanScore}\nComputer: ${computerScore}\nDraws: ${drawScore}`);    
 }
@@ -67,6 +75,10 @@ function playGame(humanChoice) {
 ///// Execution /////
 let humanScore = computerScore = drawScore = humanWin = 0;
 // playGame();
+
+const userScore = document.querySelector('.user-score');
+const cpuScore = document.querySelector('.cpu-score');
+const tieScore = document.querySelector('.tie-score');
 
 
 

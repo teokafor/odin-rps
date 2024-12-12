@@ -6,10 +6,34 @@
     <title>Document</title>
 
     <script src="main.js" defer></script>
+
+    <style>
+        .scoreboard {
+            display: flex;
+            width: 200px;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
     <button class="rock">Rock</button>
     <button class="paper">Paper</button>
     <button class="scissors">Scissors</button>
+    <hr>
+
+    <div class="scoreboard">
+        <div>
+            USR Score: 
+            <span class="user-score">0</span>
+        </div>
+        <div>
+            CPU Score: 
+            <span class="cpu-score">0</span>
+        </div>
+        <div>
+            TIE Score: 
+            <span class="tie-score">0</span>
+        </div>    
+    </div>
 </body>
 </html>
